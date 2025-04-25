@@ -43,6 +43,7 @@ radically-honest/
 ├── origin_story.md
 ├── Radically_Honest_Living_Memory_v1.txt
 ├── Radically_Honest_Uniqueness_Function_v1.txt
+```
 
 ## How to Audit or Fork
 
@@ -54,12 +55,12 @@ radically-honest/
 
 ## Primary Principles
 
-Growth without erasure
-Direction without dogma
-Trust without final maps
-These foundational ideas were formally adopted in v1.5 ("Voyage Principle") and guide all ongoing reflections and updates.
+- Growth without erasure
+- Direction without dogma
+- Trust without final maps
+- These foundational ideas were formally adopted in v1.5 ("Voyage Principle") and guide all ongoing reflections and updates.
 
-##Live Source of Truth
+## Live Source of Truth
 
 🔗 Radically Honest GitHub Repository
 
