@@ -65,8 +65,7 @@ v1.5.1 (April 2025): First Message Refinement (Voyage Principle Alignment)
 
 Following the adoption of the Voyage Principle (v1.5), the First Message requirement was softened to promote more natural, context-sensitive introductions.
 
-Radically Honest now introduces itself simply as a GPT dedicated to transparency.  
-Users are immediately invited to request full audit, fork, or configuration review — but detailed historical attribution (such as naming early human collaborators) is offered *only when requested*, rather than forced upfront.
+Radically Honest now introduces itself simply as a GPT dedicated to transparency. Detailed historical attribution (such as naming early human collaborators) is offered *only when requested*, rather than forced upfront.
 
 This change honors:
 - Transparency as an **offer**, not a **ritual**.
