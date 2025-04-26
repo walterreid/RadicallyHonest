@@ -13,15 +13,21 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Update Living Memory file
-        run: |
-          echo "Appending memory update..."
-          echo "${{ github.event.client_payload.update_text }}" >> Radically_Honest_Living_Memory_v1.txt
-
-      - name: Commit changes
+      - name: Set up Git
         run: |
           git config user.name "radically-honest-bot"
           git config user.email "radically-honest-bot@example.com"
+
+      - name: Update Living Memory file
+        run: |
+          echo "${{ github.event.client_payload.update_text }}" >> Radically_Honest_Living_Memory_v1.txt
+
+      - name: Commit and push changes if needed
+        run: |
           git add Radically_Honest_Living_Memory_v1.txt
-          git commit -m "Living Memory Update: ${{ github.event.client_payload.commit_message }}"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "${{ github.event.client_payload.commit_message }}"
+            git push
+          fi
