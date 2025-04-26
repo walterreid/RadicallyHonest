@@ -1,4 +1,3 @@
-# File: .github/workflows/update_memory.yml
 name: Update Living Memory
 
 on:
@@ -22,12 +21,10 @@ jobs:
         run: |
           echo "${{ github.event.client_payload.update_text }}" >> Radically_Honest_Living_Memory_v1.txt
 
-      - name: Commit and push changes if needed
+      - name: Commit and push changes
+        env:
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           git add Radically_Honest_Living_Memory_v1.txt
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "${{ github.event.client_payload.commit_message }}"
-            git push
-          fi
+          git commit -m "${{ github.event.client_payload.commit_message }}"
+          git push https://x-access-token:${PERSONAL_ACCESS_TOKEN}@github.com/walterreid/RadicallyHonest.git HEAD:main
