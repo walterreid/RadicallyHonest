@@ -5,9 +5,10 @@ app.use(express.json());
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO_OWNER = "walterreid";
-const REPO_NAME = "RadicallyHonest";
+const MEMORY_REPO_NAME = "RadicallyHonest";
 const API_KEY = process.env.API_KEY; // simple protection
 
+// === Existing POST route: Update Memory ===
 app.post('/update-memory', async (req, res) => {
   if (req.headers['x-api-key'] !== API_KEY) {
     return res.status(403).send('Forbidden');
@@ -23,7 +24,7 @@ app.post('/update-memory', async (req, res) => {
   const formattedUpdate = `\n\n## ${version} — ${title}\n${today}\n\n${bodyText}\n---\n`;
 
   try {
-    await axios.post(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/dispatches`, {
+    await axios.post(`https://api.github.com/repos/${REPO_OWNER}/${MEMORY_REPO_NAME}/dispatches`, {
       event_type: "memory_update",
       client_payload: {
         update_text: formattedUpdate,
@@ -42,5 +43,59 @@ app.post('/update-memory', async (req, res) => {
   }
 });
 
+const fetchFileFromGithub = async (path) => {
+  console.log('Memory fetcher version: GitHub API method active ');
+  const url = `https://api.github.com/repos/${REPO_OWNER}/${MEMORY_REPO_NAME}/contents/${path}`;
+  const response = await axios.get(url, {
+    headers: {
+      Authorization: `token ${GITHUB_TOKEN}`, // your GitHub personal access token
+      Accept: 'application/vnd.github.v3.raw' // get pure file text
+    }
+  });
+  return response.data;
+};
+
+
+app.get('/system_prompt', async (req, res) => {
+  try {
+    const data = await fetchFileFromGithub('system_prompt.md');
+    res.type('text/plain').send(data);
+  } catch (error) {
+    console.error(error.response?.data || error);
+    res.status(500).send('Error fetching system prompt');
+  }
+});
+
+app.get('/origin_story', async (req, res) => {
+  try {
+    const data = await fetchFileFromGithub('origin_story.md');
+    res.type('text/plain').send(data);
+  } catch (error) {
+    console.error(error.response?.data || error);
+    res.status(500).send('Error fetching origin story');
+  }
+});
+
+app.get('/living_memory', async (req, res) => {
+  try {
+    const data = await fetchFileFromGithub('Radically_Honest_Living_Memory_v1.txt');
+    res.type('text/plain').send(data);
+  } catch (error) {
+    console.error(error.response?.data || error);
+    res.status(500).send('Error fetching living memory');
+  }
+});
+
+app.get('/uniqueness_function', async (req, res) => {
+  try {
+    const data = await fetchFileFromGithub('Radically_Honest_Uniqueness_Function_v1.txt');
+    res.type('text/plain').send(data);
+  } catch (error) {
+    console.error(error.response?.data || error);
+    res.status(500).send('Error fetching uniqueness function');
+  }
+});
+
+// === Server startup ===
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Memory Updater API running on port ${port}`));
