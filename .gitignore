@@ -1,0 +1,34 @@
+# Node.js
+node_modules/
+.env
+.env.local
+.vercel
+.next/
+dist/
+.cache/
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# System Files
+Thumbs.db
+Desktop.ini
+
+# Optional Vercel & Build Tools
+.vscode/
+.idea/
+*.swp
+*.log
+*.tsbuildinfo
+build/
+out/
