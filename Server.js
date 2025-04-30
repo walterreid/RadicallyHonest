@@ -45,13 +45,10 @@ app.post('/update-memory', async (req, res) => {
 
 const fetchFileFromGithub = async (path) => {
   const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${MEMORY_REPO_NAME}/main/${path}`;
+  const response = await axios.get(url);
+  return response.data;
+};
 
-  const response = await axios.get(url, {
-    headers: {
-      Authorization: `token ${GITHUB_TOKEN}`,
-      Accept: 'application/vnd.github.v3.raw' // still valid, but fallback needed
-    }
-  });
 
   if (typeof response.data === 'string') {
     // raw mode worked as expected
