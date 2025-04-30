@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       {
         headers: {
           Authorization: `token ${GITHUB_TOKEN}`,
-          Accept: 'application/vnd.github.everest-preview+json'
+          Accept: 'application/vnd.github.v3+json'
         }
       }
     );
