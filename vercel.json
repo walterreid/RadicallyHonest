@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/living-memory.js": {
+      "includeFiles": ["node_modules/axios/**"]
+    }
+  }
+}
