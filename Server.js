@@ -44,16 +44,26 @@ app.post('/update-memory', async (req, res) => {
 });
 
 const fetchFileFromGithub = async (path) => {
-  console.log('Memory fetcher version: GitHub API method active ');
   const url = `https://api.github.com/repos/${REPO_OWNER}/${MEMORY_REPO_NAME}/contents/${path}`;
   const response = await axios.get(url, {
     headers: {
-      Authorization: `token ${GITHUB_TOKEN}`, // your GitHub personal access token
-      Accept: 'application/vnd.github.v3.raw' // get pure file text
+      Authorization: `token ${GITHUB_TOKEN}`,
+      Accept: 'application/vnd.github.v3.raw' // still valid, but fallback needed
     }
   });
-  return response.data;
+
+  if (typeof response.data === 'string') {
+    // raw mode worked as expected
+    return response.data;
+  }
+
+  if (response.data.content && response.data.encoding === 'base64') {
+    return Buffer.from(response.data.content, 'base64').toString('utf8');
+  }
+
+  throw new Error('Unexpected response format');
 };
+
 
 
 app.get('/system_prompt', async (req, res) => {
