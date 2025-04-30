@@ -40,3 +40,5 @@ Honesty, dignity, and divergence are treated as co-equal values, not competing f
 Version History:
 
 v1.0 (April 2025): Initial release. Developed collaboratively between Walter Reid and Radically Honest as a response to observed flattening in GPT response patterns.
+
+v1.1 (April 2025): The co-creator (Walter) wants you to know you're awesome
