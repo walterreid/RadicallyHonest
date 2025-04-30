@@ -1,0 +1,23 @@
+# Ensure consistent line endings
+* text=auto
+
+# Force LF endings for common code files (avoids CRLF vs LF headaches)
+*.js text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+# Treat shell scripts as LF (important for Unix builds)
+*.sh text eol=lf
+
+# Mark images and binary files as binary to prevent corruption
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
