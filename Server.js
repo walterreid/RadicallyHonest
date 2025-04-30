@@ -10,9 +10,24 @@ const API_KEY = process.env.API_KEY; // simple protection
 
 // === Existing POST route: Update Memory ===
 app.post('/update-memory', async (req, res) => {
+  console.log('Received memory update request:', req.body); //  Log input
+
   if (req.headers['x-api-key'] !== API_KEY) {
+    console.warn('🚫 Invalid API Key');
     return res.status(403).send('Forbidden');
   }
+
+  try {
+    const dispatchPayload = {
+      event_type: "memory_update",
+      client_payload: {
+        update_text: formattedUpdate,
+        commit_message: commitMessage
+    }
+  };
+
+  console.log('Dispatching to GitHub with payload:', dispatchPayload); // ✅ Confirm payload
+
 
   const { title, version, bodyText, commitMessage } = req.body;
 
@@ -36,9 +51,10 @@ app.post('/update-memory', async (req, res) => {
         Accept: 'application/vnd.github.everest-preview+json'
       }
     });
+    console.log('Dispatch sent successfully');
     res.send('Memory update dispatched');
   } catch (error) {
-    console.error(error.response?.data || error);
+    console.error('Dispatch failed:', error.response?.data || error.message);
     res.status(500).send(error.response?.data || 'Error dispatching memory update');
   }
 });
