@@ -4,6 +4,9 @@ on:
   repository_dispatch:
     types: [memory_update]
 
+permissions:
+  contents: write  # Grants permission to commit and push to the repo
+
 jobs:
   update-living-memory:
     runs-on: ubuntu-latest
@@ -19,7 +22,21 @@ jobs:
           git config user.name "radically-honest-bot"
           git config user.email "radically-honest-bot@example.com"
 
-      - name: Update Living Memory file
+      - name: Debug payload content
+        run: |
+          echo "Update Text:"
+          echo "${{ github.event.client_payload.update_text }}"
+          echo "Commit Message:"
+          echo "${{ github.event.client_payload.commit_message }}"
+
+      - name: Skip if update is empty
+        run: |
+          if [ -z "${{ github.event.client_payload.update_text }}" ]; then
+            echo "No update text received — exiting."
+            exit 1
+          fi
+
+      - name: Append to Living Memory
         run: |
           echo "${{ github.event.client_payload.update_text }}" >> Radically_Honest_Living_Memory_v1.txt
 
