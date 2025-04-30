@@ -1,24 +1,9 @@
 {
-  "functions": {
-    "api/living-memory.js": {
-      "runtime": "nodejs18",
-      "includeFiles": "node_modules/axios/**"
-    },
-    "api/update-memory.js": {
-      "runtime": "nodejs18",
-      "includeFiles": "node_modules/axios/**"
-    },
-    "api/origin-story.js": {
-      "runtime": "nodejs18"
-    },
-    "api/uniqueness-function.js": {
-      "runtime": "nodejs18"
-    },
-    "api/system-prompt.js": {
-      "runtime": "nodejs18"
-    },
-    "api/openapi.js": {
-      "runtime": "nodejs18"
-    }
-  }
+  "version": 2,
+  "builds": [
+    { "src": "api/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1.js" }
+  ]
 }
