@@ -4,13 +4,12 @@ info:
   description: Provides access to the current system prompt, origin story, living memory, uniqueness function, and memory update functionality.
   version: 1.1.0
 servers:
-  - url: https://v0-radical-s9-l22pz5wvl-walter-reids-projects.vercel.app  # <-- Update to your actual deployed server URL!
+  - url: https://v0-radical-s9-l22pz5wvl-walter-reids-projects.vercel.app
 paths:
   /update-memory:
     post:
       summary: Dispatch a memory update event to GitHub
       operationId: updateMemory
-      parameters: []
       requestBody:
         required: true
         content:
@@ -40,6 +39,7 @@ paths:
           description: Forbidden (Invalid API key)
         "500":
           description: Server error
+
   /system_prompt:
     get:
       summary: Get the current system prompt
@@ -51,6 +51,7 @@ paths:
             text/plain:
               schema:
                 type: string
+
   /origin_story:
     get:
       summary: Get the origin story
@@ -62,6 +63,7 @@ paths:
             text/plain:
               schema:
                 type: string
+
   /living_memory:
     get:
       summary: Get the living memory
@@ -73,6 +75,7 @@ paths:
             text/plain:
               schema:
                 type: string
+
   /uniqueness_function:
     get:
       summary: Get the uniqueness function
