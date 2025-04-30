@@ -44,7 +44,8 @@ app.post('/update-memory', async (req, res) => {
 });
 
 const fetchFileFromGithub = async (path) => {
-  const url = `https://api.github.com/repos/${REPO_OWNER}/${MEMORY_REPO_NAME}/contents/${path}`;
+  const url = `https://raw.githubusercontent.com/${REPO_OWNER}/${MEMORY_REPO_NAME}/main/${path}`;
+
   const response = await axios.get(url, {
     headers: {
       Authorization: `token ${GITHUB_TOKEN}`,
