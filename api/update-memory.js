@@ -9,7 +9,8 @@ export default async function handler(req, res) {
     return res.status(405).send('Method Not Allowed');
   }
 
-  if (req.headers['x-api-key'] !== API_KEY) {
+  // ✅ Safer key check: protects against missing .env var or missing header
+  if (!API_KEY || req.headers['x-api-key'] !== API_KEY) {
     return res.status(403).send('Forbidden: Invalid API Key');
   }
 
