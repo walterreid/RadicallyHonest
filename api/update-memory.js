@@ -12,6 +12,18 @@ export default async function handler(req, res) {
     });
   }
 
+  if (!process.env.API_KEY) {
+  console.error("❌ CRITICAL: API_KEY not set in environment!");
+
+  return res.status(500).json({
+    success: false,
+    error: 'Server misconfigured: Missing API_KEY',
+    code: 'CONFIG_ERROR',
+    details: 'Environment variable API_KEY must be set for authentication to work.'
+  });
+}
+
+
   const apiKeyHeader = req.headers['x-api-key'];
   const validKey = process.env.API_KEY;
   
