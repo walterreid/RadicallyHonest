@@ -7,7 +7,6 @@
     }
   ],
   "routes": [
-    // --- Specific getX alias handling across folders ---
     {
       "src": "/api/(?:[^/]+/)?getSystemPrompt",
       "dest": "/api/system-prompt.js"
@@ -28,8 +27,6 @@
       "src": "/api/(?:[^/]+/)?updateMemory",
       "dest": "/api/update-memory.js"
     },
-
-    // --- Direct OpenAPI-style endpoint access (no /api prefix) ---
     {
       "src": "/system-prompt",
       "dest": "/api/system-prompt.js"
@@ -50,8 +47,6 @@
       "src": "/update-memory",
       "dest": "/api/update-memory.js"
     },
-
-    // --- Other important static rewrites ---
     {
       "src": "/.well-known/ai-plugin.json",
       "dest": "/api/ai-plugin.js"
@@ -60,14 +55,10 @@
       "src": "/openapi.yaml",
       "dest": "/api/openapi.js"
     },
-
-    // --- Wildcard fallback to support any /api/[folder]/handler.js ---
     {
       "src": "/api/[^/]+/(.*)",
       "dest": "/api/$1.js"
     },
-
-    // --- Final catch-all fallback for /api/*.js directly ---
     {
       "src": "/api/(.*)",
       "dest": "/api/$1.js"
