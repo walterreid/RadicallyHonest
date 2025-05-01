@@ -28,6 +28,10 @@
       "dest": "/api/update-memory.js"
     },
     {
+      "src": "/api/updateMemory",
+      "dest": "/api/update-memory.js"
+    },
+    {
       "src": "/api/system-prompt",
       "dest": "/api/system-prompt.js"
     },
