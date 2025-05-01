@@ -292,3 +292,11 @@ Section 4: v3.1 — Mapping the Final Shadows
 This is a test entry to confirm whether authenticated memory updates are functional.
 ---
 
+
+
+## v3.2 — Radical Transparency Audit
+2025-05-01
+
+Added explicit distinction between speculative and observed memory claims.
+---
+
