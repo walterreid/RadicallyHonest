@@ -52,6 +52,10 @@
       "dest": "/api/ai-plugin.js"
     },
     {
+      "src": "/openai.yaml",
+      "dest": "/api/openai.js"
+    },
+    {
       "src": "/api/jit/(.*)",
       "dest": "/api/$1.js"
     },
