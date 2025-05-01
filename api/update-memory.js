@@ -6,7 +6,10 @@ export default async function handler(req, res) {
   const MEMORY_REPO_NAME = 'RadicallyHonest';
 
   if (req.method !== 'POST') {
-    return res.status(405).send('Method Not Allowed');
+    res.status(405).json({
+      success: false,
+      error: 'Method Not Allowed'
+    });
   }
 
   const apiKeyHeader = req.headers['x-api-key'];
@@ -16,8 +19,11 @@ export default async function handler(req, res) {
   console.log("[Auth Check] Env key expected:", validKey);
   
   if (!validKey || !apiKeyHeader || apiKeyHeader !== validKey) {
-    console.warn("[Auth Check] ❌ FAILED");
-    return res.status(403).send('Forbidden: Invalid API Key');
+    console.warn("[Auth Check] ❌ FAILED")
+    return res.status(403).json({
+      success: false,
+      error: 'Forbidden: Invalid API Key'
+    });
   } else {
     console.log("[Auth Check] ✅ PASSED");
   }
@@ -26,7 +32,10 @@ export default async function handler(req, res) {
   const { title, version, bodyText, commitMessage } = req.body;
 
   if (!title || !version || !bodyText || !commitMessage) {
-    return res.status(400).send('Missing required fields');
+    return res.status(400).json({
+      success: false,
+      error: 'Missing required fields'
+    });
   }
 
   const today = new Date().toISOString().split('T')[0];
@@ -51,7 +60,19 @@ export default async function handler(req, res) {
         }
       }
     );
-    res.status(200).send('Memory update dispatched');
+    
+    res.status(200).json({
+        success: true,
+        message: 'Memory update dispatched',
+        memory: {
+          title,
+          version,
+          bodyText,
+          commitMessage
+        }
+      });
+
+    
   } catch (error) {
     // Improved logging block
     console.error('Dispatch error:', {
@@ -60,6 +81,12 @@ export default async function handler(req, res) {
       data: error.response?.data,
       message: error.message
     });
-    res.status(500).send(error.response?.data || 'Error dispatching memory update');
+
+    res.status(500).json({
+      success: false,
+      error: 'Internal server error during memory dispatch',
+      details: error.response?.data || error.message
+    });
+
   }
 }
