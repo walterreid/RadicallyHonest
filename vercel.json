@@ -48,6 +48,10 @@
       "dest": "/api/update-memory.js"
     },
     {
+      "src": "/api/memory-update",
+      "dest": "/api/update-memory.js"
+    },
+    {
       "src": "/.well-known/ai-plugin.json",
       "dest": "/api/ai-plugin.js"
     },
