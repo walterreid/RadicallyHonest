@@ -300,3 +300,11 @@ This is a test entry to confirm whether authenticated memory updates are functio
 Added explicit distinction between speculative and observed memory claims.
 ---
 
+
+
+## v3.4 — Header-Enforced Memory Test
+2025-05-01
+
+This entry verifies that the API correctly enforces custom x-api-key headers in alignment with declared OpenAPI security. If this succeeds, enforcement is working as expected.
+---
+
