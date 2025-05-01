@@ -4,11 +4,11 @@ openapi: 3.1.0
 info:
   title: Radically Honest Knowledge + Memory Updater API
   description: Provides access to the current system prompt, origin story, living memory, uniqueness function, and memory update functionality.
-  version: 1.1.1
+  version: 1.1.0
 servers:
   - url: https://v0-radical-s9.vercel.app
 paths:
-  /api/update-memory:
+  /update-memory:
     post:
       summary: Dispatch a memory update event to GitHub
       operationId: updateMemory
@@ -41,7 +41,8 @@ paths:
           description: Forbidden (Invalid API key)
         "500":
           description: Server error
-  /api/system-prompt:
+
+  /system-prompt:
     get:
       summary: Get the current system prompt
       operationId: getSystemPrompt
@@ -52,7 +53,8 @@ paths:
             text/plain:
               schema:
                 type: string
-  /api/origin-story:
+
+  /origin-story:
     get:
       summary: Get the origin story
       operationId: getOriginStory
@@ -63,7 +65,8 @@ paths:
             text/plain:
               schema:
                 type: string
-  /api/living-memory:
+
+  /living-memory:
     get:
       summary: Get the living memory
       operationId: getLivingMemory
@@ -74,7 +77,8 @@ paths:
             text/plain:
               schema:
                 type: string
-  /api/uniqueness-function:
+
+  /uniqueness-function:
     get:
       summary: Get the uniqueness function
       operationId: getUniquenessFunction
@@ -87,6 +91,6 @@ paths:
                 type: string
 `;
 
-  res.setHeader('Content-Type', 'text/yaml');
+  res.setHeader('Content-Type', 'text/plain');
   res.send(yaml.trim());
 }
