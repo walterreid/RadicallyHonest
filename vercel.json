@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "builds": [
     {
       "src": "api/*.js",
@@ -28,12 +28,12 @@
       "dest": "/api/update-memory.js"
     },
     {
-      "src": "/api/jit/(.*)",
-      "dest": "/api/$1.js"
+      "src": "/api/jit/(?<path>.*)",
+      "dest": "/api/$path.js"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.js"
+      "src": "/api/(?<path>.*)",
+      "dest": "/api/$path.js"
     }
   ]
 }
