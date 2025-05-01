@@ -78,7 +78,7 @@
       "headers": [
         {
           "key": "Content-Type",
-          "value": "application/yaml"
+          "value": "application/vnd.oai.openapi"
         }
       ]
     }
