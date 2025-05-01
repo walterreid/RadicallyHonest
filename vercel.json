@@ -24,16 +24,36 @@
       "dest": "/api/uniqueness-function.js"
     },
     {
-      "src": "/api/jit/updateMemory",
+      "src": "/api/jit/getUpdateMemory",
       "dest": "/api/update-memory.js"
     },
     {
-      "src": "/api/jit/(?<path>.*)",
-      "dest": "/api/$path.js"
+      "src": "/api/system-prompt",
+      "dest": "/api/system-prompt.js"
     },
     {
-      "src": "/api/(?<path>.*)",
-      "dest": "/api/$path.js"
+      "src": "/api/living-memory",
+      "dest": "/api/living-memory.js"
+    },
+    {
+      "src": "/api/origin-story",
+      "dest": "/api/origin-story.js"
+    },
+    {
+      "src": "/api/uniqueness-function",
+      "dest": "/api/uniqueness-function.js"
+    },
+    {
+      "src": "/api/update-memory",
+      "dest": "/api/update-memory.js"
+    },
+    {
+      "src": "/api/jit/(.*)",
+      "dest": "/api/$1.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1.js"
     }
   ]
 }

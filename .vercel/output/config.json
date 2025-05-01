@@ -22,6 +22,26 @@
       "dest": "/api/update-memory.js"
     },
     {
+      "src": "/api/system-prompt",
+      "dest": "/api/system-prompt.js"
+    },
+    {
+      "src": "/api/living-memory",
+      "dest": "/api/living-memory.js"
+    },
+    {
+      "src": "/api/origin-story",
+      "dest": "/api/origin-story.js"
+    },
+    {
+      "src": "/api/uniqueness-function",
+      "dest": "/api/uniqueness-function.js"
+    },
+    {
+      "src": "/api/update-memory",
+      "dest": "/api/update-memory.js"
+    },
+    {
       "src": "/api/jit/(?<path>.*)",
       "dest": "/api/$path.js"
     },
