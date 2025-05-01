@@ -36,8 +36,8 @@ export default async function handler(req, res) {
       payload,
       {
         headers: {
-          Authorization: `token ${GITHUB_TOKEN}`,
-          Accept: 'application/vnd.github.v3+json'
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
+          Accept: 'application/vnd.github+json'
         }
       }
     );
