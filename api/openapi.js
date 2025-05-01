@@ -12,6 +12,8 @@ paths:
     post:
       summary: Dispatch a memory update event to GitHub
       operationId: updateMemory
+      security:
+        - ApiKeyAuth: []
       requestBody:
         required: true
         content:
@@ -89,6 +91,18 @@ paths:
             text/plain:
               schema:
                 type: string
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+`;
+  res.setHeader('Content-Type', 'text/plain');
+  res.send(yaml.trim());
+}
+
 `;
 
   res.setHeader('Content-Type', 'text/plain');
