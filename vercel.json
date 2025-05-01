@@ -8,8 +8,32 @@
   ],
   "routes": [
     {
+      "src": "/api/jit/(.*)",
+      "dest": "/api/$1.js"
+    },
+    {
       "src": "/api/(.*)",
       "dest": "/api/$1.js"
+    },
+    {
+      "src": "/api/jit/getSystemPrompt",
+      "dest": "/api/system-prompt.js"
+    },
+    {
+      "src": "/api/jit/getLivingMemory",
+      "dest": "/api/living-memory.js"
+    },
+    {
+      "src": "/api/jit/getOriginStory",
+      "dest": "/api/origin-story.js"
+    },
+    {
+      "src": "/api/jit/getUniquenessFunction",
+      "dest": "/api/uniqueness-function.js"
+    },
+    {
+      "src": "/api/jit/updateMemory",
+      "dest": "/api/update-memory.js"
     }
   ]
 }

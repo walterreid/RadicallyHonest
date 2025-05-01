@@ -1,0 +1,4 @@
+"api": {
+  "type": "openapi",
+  "url": "https://v0-radical-s9.vercel.app/api/openapi"
+}
