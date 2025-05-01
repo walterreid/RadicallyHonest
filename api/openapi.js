@@ -103,8 +103,6 @@ components:
   res.send(yaml.trim());
 }
 
-`;
-
   res.setHeader('Content-Type', 'text/plain');
   res.send(yaml.trim());
 }
