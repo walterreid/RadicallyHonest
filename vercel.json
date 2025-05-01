@@ -1,5 +1,5 @@
+
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "builds": [
     {
@@ -9,43 +9,67 @@
   ],
   "routes": [
     {
-      "src": "/api/(?:[^/]+/)?getSystemPrompt",
+      "src": "/api/jit/getSystemPrompt",
       "dest": "/api/system-prompt.js"
     },
     {
-      "src": "/api/(?:[^/]+/)?getLivingMemory",
+      "src": "/api/jit/getLivingMemory",
       "dest": "/api/living-memory.js"
     },
     {
-      "src": "/api/(?:[^/]+/)?getOriginStory",
+      "src": "/api/jit/getOriginStory",
       "dest": "/api/origin-story.js"
     },
     {
-      "src": "/api/(?:[^/]+/)?getUniquenessFunction",
+      "src": "/api/jit/getUniquenessFunction",
       "dest": "/api/uniqueness-function.js"
     },
     {
-      "src": "/api/(?:[^/]+/)?updateMemory",
+      "src": "/api/jit/updateMemory",
       "dest": "/api/update-memory.js"
     },
     {
-      "src": "/system-prompt",
+      "src": "/api/getSystemPrompt",
       "dest": "/api/system-prompt.js"
     },
     {
-      "src": "/origin-story",
-      "dest": "/api/origin-story.js"
-    },
-    {
-      "src": "/living-memory",
+      "src": "/api/getLivingMemory",
       "dest": "/api/living-memory.js"
     },
     {
-      "src": "/uniqueness-function",
+      "src": "/api/getOriginStory",
+      "dest": "/api/origin-story.js"
+    },
+    {
+      "src": "/api/getUniquenessFunction",
       "dest": "/api/uniqueness-function.js"
     },
     {
-      "src": "/update-memory",
+      "src": "/api/updateMemory",
+      "dest": "/api/update-memory.js"
+    },
+    {
+      "src": "/api/system-prompt",
+      "dest": "/api/system-prompt.js"
+    },
+    {
+      "src": "/api/living-memory",
+      "dest": "/api/living-memory.js"
+    },
+    {
+      "src": "/api/origin-story",
+      "dest": "/api/origin-story.js"
+    },
+    {
+      "src": "/api/uniqueness-function",
+      "dest": "/api/uniqueness-function.js"
+    },
+    {
+      "src": "/api/update-memory",
+      "dest": "/api/update-memory.js"
+    },
+    {
+      "src": "/api/memory-update",
       "dest": "/api/update-memory.js"
     },
     {
@@ -57,19 +81,12 @@
       "dest": "/api/openapi.js"
     },
     {
-      "src": "/api/[^/]+/(.*)",
+      "src": "/api/jit/(.*)",
       "dest": "/api/$1.js"
-    }
-  ],
-  "headers": [
+    },
     {
-      "source": "/openapi.yaml",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/yaml"
-        }
-      ]
+      "src": "/api/(.*)",
+      "dest": "/api/$1.js"
     }
   ]
 }
