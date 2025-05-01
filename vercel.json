@@ -28,6 +28,22 @@
       "dest": "/api/update-memory.js"
     },
     {
+      "src": "/api/getSystemPrompt",
+      "dest": "/api/system-prompt.js"
+    },
+    {
+      "src": "/api/getLivingMemory",
+      "dest": "/api/living-memory.js"
+    },
+    {
+      "src": "/api/getOriginStory",
+      "dest": "/api/origin-story.js"
+    },
+    {
+      "src": "/api/getUniquenessFunction",
+      "dest": "/api/uniqueness-function.js"
+    },
+    {
       "src": "/api/updateMemory",
       "dest": "/api/update-memory.js"
     },
