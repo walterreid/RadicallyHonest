@@ -9,7 +9,7 @@
   ],
   "routes": [
     {
-      "src": "/api/jit/getSystemPrompt",
+      "src": "/api/(?:[^/]+/)?getSystemPrompt",
       "dest": "/api/system-prompt.js"
     },
     {
