@@ -43,7 +43,13 @@ export default async function handler(req, res) {
     );
     res.status(200).send('Memory update dispatched');
   } catch (error) {
-    console.error('GitHub dispatch failed:', error.response?.data || error.message);
+    // Improved logging block
+    console.error('Dispatch error:', {
+      status: error.response?.status,
+      headers: error.response?.headers,
+      data: error.response?.data,
+      message: error.message
+    });
     res.status(500).send(error.response?.data || 'Error dispatching memory update');
   }
 }
