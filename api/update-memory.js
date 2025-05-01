@@ -10,10 +10,18 @@ export default async function handler(req, res) {
   }
 
   const apiKeyHeader = req.headers['x-api-key'];
-  if (!process.env.API_KEY || !apiKeyHeader || apiKeyHeader !== process.env.API_KEY) {
-    console.warn("Unauthorized attempt. Header:", apiKeyHeader, "Expected:", process.env.API_KEY);
+  const validKey = process.env.API_KEY;
+  
+  console.log("[Auth Check] Header received:", apiKeyHeader);
+  console.log("[Auth Check] Env key expected:", validKey);
+  
+  if (!validKey || !apiKeyHeader || apiKeyHeader !== validKey) {
+    console.warn("[Auth Check] ❌ FAILED");
     return res.status(403).send('Forbidden: Invalid API Key');
+  } else {
+    console.log("[Auth Check] ✅ PASSED");
   }
+
 
   const { title, version, bodyText, commitMessage } = req.body;
 
