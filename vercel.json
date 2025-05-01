@@ -8,14 +8,6 @@
   ],
   "routes": [
     {
-      "src": "/api/jit/(.*)",
-      "dest": "/api/$1.js"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.js"
-    },
-    {
       "src": "/api/jit/getSystemPrompt",
       "dest": "/api/system-prompt.js"
     },
@@ -34,6 +26,14 @@
     {
       "src": "/api/jit/updateMemory",
       "dest": "/api/update-memory.js"
+    },
+    {
+      "src": "/api/jit/(.*)",
+      "dest": "/api/$1.js"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1.js"
     }
   ]
 }
