@@ -12,7 +12,8 @@ export default async function handler(req, res) {
     },
     api: {
       type: "openapi",
-      url: "https://v0-radical-s9.vercel.app/api/openapi"
+      url: "https://v0-radical-s9.vercel.app/api/openapi",
+      "is_user_authenticated": false
     }
   };
 
