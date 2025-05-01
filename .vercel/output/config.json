@@ -2,32 +2,32 @@
   "version": 3,
   "routes": [
     {
-      "src": "/api/jit/getSystemPrompt",
-      "dest": "/api/system-prompt.js"
+      "source": "/api/jit/getSystemPrompt",
+      "destination": "/api/system-prompt.js"
     },
     {
-      "src": "/api/jit/getLivingMemory",
-      "dest": "/api/living-memory.js"
+      "source": "/api/jit/getLivingMemory",
+      "destination": "/api/living-memory.js"
     },
     {
-      "src": "/api/jit/getOriginStory",
-      "dest": "/api/origin-story.js"
+      "source": "/api/jit/getOriginStory",
+      "destination": "/api/origin-story.js"
     },
     {
-      "src": "/api/jit/getUniquenessFunction",
-      "dest": "/api/uniqueness-function.js"
+      "source": "/api/jit/getUniquenessFunction",
+      "destination": "/api/uniqueness-function.js"
     },
     {
-      "src": "/api/jit/updateMemory",
-      "dest": "/api/update-memory.js"
+      "source": "/api/jit/updateMemory",
+      "destination": "/api/update-memory.js"
     },
     {
-      "src": "/api/jit/(.*)",
-      "dest": "/api/$1.js"
+      "source": "/api/jit/(.*)",
+      "destination": "/api/$1.js"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1.js"
+      "source": "/api/(.*)",
+      "destination": "/api/$1.js"
     }
   ]
 }
