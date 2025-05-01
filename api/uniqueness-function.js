@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios/dist/node/axios.cjs';
 
 export default async function handler(req, res) {
   const url = 'https://raw.githubusercontent.com/walterreid/RadicallyHonest/main/Radically_Honest_Uniqueness_Function_v1.txt';
