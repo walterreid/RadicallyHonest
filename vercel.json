@@ -7,70 +7,51 @@
     }
   ],
   "routes": [
+    // --- Specific getX alias handling across folders ---
     {
-      "src": "/api/jit/getSystemPrompt",
+      "src": "/api/(?:[^/]+/)?getSystemPrompt",
       "dest": "/api/system-prompt.js"
     },
     {
-      "src": "/api/jit/getLivingMemory",
+      "src": "/api/(?:[^/]+/)?getLivingMemory",
       "dest": "/api/living-memory.js"
     },
     {
-      "src": "/api/jit/getOriginStory",
+      "src": "/api/(?:[^/]+/)?getOriginStory",
       "dest": "/api/origin-story.js"
     },
     {
-      "src": "/api/jit/getUniquenessFunction",
+      "src": "/api/(?:[^/]+/)?getUniquenessFunction",
       "dest": "/api/uniqueness-function.js"
     },
     {
-      "src": "/api/jit/updateMemory",
+      "src": "/api/(?:[^/]+/)?updateMemory",
       "dest": "/api/update-memory.js"
     },
+
+    // --- Direct OpenAPI-style endpoint access (no /api prefix) ---
     {
-      "src": "/api/getSystemPrompt",
+      "src": "/system-prompt",
       "dest": "/api/system-prompt.js"
     },
     {
-      "src": "/api/getLivingMemory",
-      "dest": "/api/living-memory.js"
-    },
-    {
-      "src": "/api/getOriginStory",
+      "src": "/origin-story",
       "dest": "/api/origin-story.js"
     },
     {
-      "src": "/api/getUniquenessFunction",
-      "dest": "/api/uniqueness-function.js"
-    },
-    {
-      "src": "/api/updateMemory",
-      "dest": "/api/update-memory.js"
-    },
-    {
-      "src": "/api/system-prompt",
-      "dest": "/api/system-prompt.js"
-    },
-    {
-      "src": "/api/living-memory",
+      "src": "/living-memory",
       "dest": "/api/living-memory.js"
     },
     {
-      "src": "/api/origin-story",
-      "dest": "/api/origin-story.js"
-    },
-    {
-      "src": "/api/uniqueness-function",
+      "src": "/uniqueness-function",
       "dest": "/api/uniqueness-function.js"
     },
     {
-      "src": "/api/update-memory",
+      "src": "/update-memory",
       "dest": "/api/update-memory.js"
     },
-    {
-      "src": "/api/memory-update",
-      "dest": "/api/update-memory.js"
-    },
+
+    // --- Other important static rewrites ---
     {
       "src": "/.well-known/ai-plugin.json",
       "dest": "/api/ai-plugin.js"
@@ -79,13 +60,28 @@
       "src": "/openapi.yaml",
       "dest": "/api/openapi.js"
     },
+
+    // --- Wildcard fallback to support any /api/[folder]/handler.js ---
     {
-      "src": "/api/jit/(.*)",
+      "src": "/api/[^/]+/(.*)",
       "dest": "/api/$1.js"
     },
+
+    // --- Final catch-all fallback for /api/*.js directly ---
     {
       "src": "/api/(.*)",
       "dest": "/api/$1.js"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/openapi.yaml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/yaml"
+        }
+      ]
     }
   ]
 }
