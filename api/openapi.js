@@ -98,11 +98,8 @@ components:
       type: apiKey
       in: header
       name: x-api-key
+  schemas: {}
 `;
-  res.setHeader('Content-Type', 'text/plain');
-  res.send(yaml.trim());
-}
-
   res.setHeader('Content-Type', 'text/plain');
   res.send(yaml.trim());
 }
