@@ -24,7 +24,7 @@
       "dest": "/api/uniqueness-function.js"
     },
     {
-      "src": "/api/jit/getUpdateMemory",
+      "src": "/api/jit/updateMemory",
       "dest": "/api/update-memory.js"
     },
     {
