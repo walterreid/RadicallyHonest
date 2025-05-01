@@ -87,16 +87,5 @@
       "src": "/api/(.*)",
       "dest": "/api/$1.js"
     }
-  ],
-  "headers": [
-    {
-      "source": "/openapi.yaml",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/vnd.oai.openapi"
-        }
-      ]
-    }
   ]
 }
